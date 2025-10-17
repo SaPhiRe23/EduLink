@@ -1,0 +1,52 @@
+/* Fondo y texto base */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f6;
+  color: #111827;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Asegura que el contenido principal se centre */
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenedor general de cada página */
+.page-container {
+  max-width: 800px;
+  width: 90%;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h2 {
+  color: #1e40af;
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Texto */
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-container {
+    width: 95%;
+    padding: 15px;
+  }
+}
