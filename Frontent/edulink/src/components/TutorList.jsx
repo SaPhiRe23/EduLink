@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import API from "../services/api";
 
 export default function TutorList() {

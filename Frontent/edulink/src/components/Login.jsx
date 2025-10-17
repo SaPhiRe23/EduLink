@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import API from "../services/api";
 import "./Login.css";
 
@@ -9,7 +9,12 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await API.post("/users", { nombre, correo, rol: "estudiante", password: "1234" });
+      await API.post("/users", {
+        nombre,
+        correo,
+        rol: "estudiante",
+        password: "1234",
+      });
       alert("Usuario registrado correctamente");
       setNombre("");
       setCorreo("");
