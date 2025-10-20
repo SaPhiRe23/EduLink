@@ -1,0 +1,76 @@
+.tutor-grid-container {
+  text-align: center;
+  padding: 40px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.tutor-grid-container h2 {
+  color: #1e3a8a;
+  margin-bottom: 30px;
+}
+
+.tutor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tutor-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.tutor-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.tutor-card h3 {
+  color: #1e40af;
+  margin-bottom: 5px;
+}
+
+.tutor-card p {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.tutor-info {
+  margin-top: 15px;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 10px;
+  color: #334155;
+}
+
+.tutor-card.active {
+  border: 2px solid #1d4ed8;
+  background-color: #eff6ff;
+}
+
+@media (max-width: 768px) {
+  .tutor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+.select-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background-color: #1e40af;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.select-btn:hover {
+  background-color: #1d4ed8;
+}
+

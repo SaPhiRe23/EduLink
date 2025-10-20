@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from "react";
-import API from "../services/api";
+import api from "../services/api";
 import "./TutorList.css";
 
 export default function TutorList() {
-  const [usuarios, setUsuarios] = useState([]);
+  const [tutors, setTutors] = useState([]);
 
   useEffect(() => {
-  API.get("/users")
-    .then((res) => setUsuarios(res.data))
-    .catch(() => alert("Error al obtener usuarios"));
-}, []);
+    const fetchTutors = async () => {
+      try {
+        const data = await api.getTutors();
+        setTutors(data);
+      } catch (error) {
+        console.error("Error al obtener tutores:", error);
+        alert("Error al obtener tutores");
+      }
+    };
 
+    fetchTutors();
+  }, []);
 
   return (
     <div className="tutor-list-container">
-      <h2>Usuarios registrados</h2>
-      {usuarios.length === 0 ? (
-        <p>No hay usuarios aún.</p>
-      ) : (
-        <ul>
-          {usuarios.map((u, i) => (
-            <li key={i}>
-              <strong>{u.name}</strong> — {u.email}
-            </li>
-          ))}
-        </ul>
-      )}
+      <h2>Lista de Tutores</h2>
+      <ul>
+        {tutors.map((tutor) => (
+          <li key={tutor.id}>
+            <strong>{tutor.name}</strong> - {tutor.subject} ({tutor.email})
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

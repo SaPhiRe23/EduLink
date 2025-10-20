@@ -1,16 +1,16 @@
 from fastapi import APIRouter
 from models.tutor import Tutor
-from typing import List
 
 router = APIRouter(prefix="/tutors", tags=["Tutores"])
 
-fake_tutors_db = []
 
-@router.get("/", response_model=List[Tutor])
+tutors = [
+    {"id": 1, "name": "Carlos Pérez", "subject": "Matemáticas", "email": "carlos@edulink.com"},
+    {"id": 2, "name": "Laura Gómez", "subject": "Inglés", "email": "laura@edulink.com"},
+    {"id": 3, "name": "Andrés Silva", "subject": "Física", "email": "andres@edulink.com"},
+    {"id": 4, "name": "María Torres", "subject": "Programación", "email": "maria@edulink.com"},
+]
+
+@router.get("/")
 def get_tutors():
-    return fake_tutors_db
-
-@router.post("/", response_model=Tutor)
-def create_tutor(tutor: Tutor):
-    fake_tutors_db.append(tutor)
-    return tutor
+    return tutors
