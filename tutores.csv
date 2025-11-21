@@ -1,0 +1,6 @@
+﻿tutorID;userID;name;email;subject;bio;rating;schedules
+6;1;Juan Pérez;jperez@gmail.com;Matemáticas;Profesor con 10 años de experiencia;4.7;Lunes 8-10,Miércoles 14-16
+7;2;Camila Fuentes;cfuentes@gmail.com;Inglés;Tutora especializada en sistema nervioso;4.8;Martes 9-11,Jueves 13-15
+8;3;Luis Ramírez;lramirez@gmail.com;Física;Apasionado por la enseñanza de ciencias;4.6;Lunes 10-12,Viernes 8-10
+9;4;Sofía Martínez;smartinez@gmail.com;Programación;Experta en Python y desarrollo web;4.9;Martes 14-16,Jueves 16-18
+10;5;Diego Torres;dtorres@gmail.com;Química;Tutor con enfoque práctico;4.5;Miércoles 9-11,Viernes 14-16
