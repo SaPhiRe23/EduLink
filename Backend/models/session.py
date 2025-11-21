@@ -1,8 +1,9 @@
+# models/session.py
 from pydantic import BaseModel
 
 class Session(BaseModel):
-    sessionID: str
-    tutor: str
-    student: str
+    sessionID: int
+    tutorID: int
+    userID: int
     topic: str
     date: str

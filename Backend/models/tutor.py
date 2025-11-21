@@ -1,11 +1,12 @@
-from pydantic import BaseModel, EmailStr
+# models/tutor.py
+from pydantic import BaseModel
 
 class Tutor(BaseModel):
-    tutorID: str
-    userID: str
+    tutorID: int
+    userID: int
     name: str
-    email: EmailStr
-    subject: list[str]
+    email: str
+    subject: str
     bio: str
     rating: float
-    TutorDays: dict[str, list[str]]  # e.g., {"Monday": ["10:00-12:00", "14:00-16:00"]}
+    schedules: str
