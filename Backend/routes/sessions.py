@@ -5,7 +5,7 @@ from database import db, get_next_id
 
 router = APIRouter(prefix="/sessions", tags=["Sesiones"])
 
-@router.get("/", response_model=List[Session])
+@router.get("", response_model=List[Session])
 async def get_sessions():
     data = await db.sessions.find().to_list(200)
     for s in data:
@@ -13,7 +13,7 @@ async def get_sessions():
     return data
 
 
-@router.post("/", response_model=Session)
+@router.post("", response_model=Session)
 async def create_session(session: Session):
 
     session.sessionID = await get_next_id("sessions")

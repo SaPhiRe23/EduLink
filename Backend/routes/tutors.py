@@ -6,7 +6,7 @@ from database import db
 router = APIRouter(prefix="/tutors", tags=["Tutores"])
 
 
-@router.get("/", response_model=List[Tutor])
+@router.get("", response_model=List[Tutor])
 async def get_tutors():
     tutors = await db.tutors.find().to_list(200)
 

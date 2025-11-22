@@ -7,7 +7,7 @@ from database import db, get_next_id
 router = APIRouter(prefix="/users", tags=["Usuarios"])
 
 
-@router.get("/", response_model=List[User])
+@router.get("", response_model=List[User])
 async def get_users():
     users = await db.users.find().to_list(200)
 
@@ -18,7 +18,7 @@ async def get_users():
     return users
 
 
-@router.post("/", response_model=User)
+@router.post("", response_model=User)
 async def create_user(user: User):
     # Verifica email único
     existing = await db.users.find_one({"email": user.email})
