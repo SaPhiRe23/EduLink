@@ -1,5 +1,5 @@
 // src/services/api.js
-const API_URL = "http://localhost:8000";
+const API_URL = "https://edulink-ast6.onrender.com";
 
 async function getTutors() {
   const response = await fetch(`${API_URL}/tutors`);
