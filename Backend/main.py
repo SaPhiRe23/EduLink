@@ -7,12 +7,12 @@ app = FastAPI(title="EduLink API")
 # Configuración CORS para conectar con el frontend (React/Vite)
 origins = [
     "http://localhost:5173",
-    "https://edu-link-kappa.vercel.app"
+    "https://edu-link-c9uoem38m-andres-projects-bc43b1fb.vercel.app/"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,     # ✅ ahora sí se usa la lista correcta
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
