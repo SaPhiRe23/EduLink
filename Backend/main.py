@@ -4,15 +4,9 @@ from routes import users, tutors, sessions
 
 app = FastAPI(title="EduLink API")
 
-# Configuración CORS para conectar con el frontend (React/Vite)
-origins = [
-    "http://localhost:5173",
-    "https://edu-link-xxxxxxxxx-andres-projects-bc43b1fb.vercel.app"
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=True,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
