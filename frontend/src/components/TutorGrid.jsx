@@ -6,12 +6,18 @@ export default function TutorGrid() {
   const [tutors, setTutors] = useState([]);
   const [selectedTutor, setSelectedTutor] = useState(null);
 
-  // Cargar tutores desde el backend
   useEffect(() => {
     const fetchTutors = async () => {
       try {
         const data = await api.getTutors();
-        setTutors(data);
+
+        // Normalizar _id a id
+        const formatted = data.map(t => ({
+          ...t,
+          id: t._id || t.id
+        }));
+
+        setTutors(formatted);
       } catch (error) {
         console.error("Error al obtener tutores:", error);
         alert("Error al obtener tutores");
@@ -21,12 +27,10 @@ export default function TutorGrid() {
     fetchTutors();
   }, []);
 
-  // Manejar selección de tarjeta
   const handleCardClick = (id) => {
     setSelectedTutor(selectedTutor === id ? null : id);
   };
 
-  // Mostrar alerta cuando se confirma selección
   const handleConfirmClick = (tutor) => {
     alert(`Has seleccionado a ${tutor.name}, materia: ${tutor.subject}`);
   };
@@ -34,6 +38,7 @@ export default function TutorGrid() {
   return (
     <div className="tutor-grid-container">
       <h2 className="tutor-title">Nuestros Tutores</h2>
+
       <div className="tutor-grid">
         {tutors.map((tutor) => (
           <div
@@ -49,10 +54,12 @@ export default function TutorGrid() {
                 <hr />
                 <p><strong>Correo:</strong> {tutor.email}</p>
                 <p><strong>Materia:</strong> {tutor.subject}</p>
+                <p><strong>Bio:</strong> {tutor.bio}</p>
+
                 <button
                   className="select-btn"
                   onClick={(e) => {
-                    e.stopPropagation(); // evita que cierre el card al hacer clic
+                    e.stopPropagation();
                     handleConfirmClick(tutor);
                   }}
                 >

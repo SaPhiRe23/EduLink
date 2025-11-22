@@ -9,7 +9,13 @@ export default function TutorList() {
     const fetchTutors = async () => {
       try {
         const data = await api.getTutors();
-        setTutors(data);
+
+        const formatted = data.map(t => ({
+          ...t,
+          id: t._id || t.id
+        }));
+
+        setTutors(formatted);
       } catch (error) {
         console.error("Error al obtener tutores:", error);
         alert("Error al obtener tutores");

@@ -1,11 +1,10 @@
-// src/services/api.js
 const API_URL = "https://edulink-ast6.onrender.com";
 
 // -----------------------------
 // Obtener lista de tutores
 // -----------------------------
 async function getTutors() {
-  const response = await fetch(`${API_URL}/tutors`);
+  const response = await fetch(`${API_URL}/tutors/`);
   if (!response.ok) throw new Error("Error al obtener tutores");
   return await response.json();
 }
@@ -14,7 +13,7 @@ async function getTutors() {
 // Obtener lista de usuarios
 // -----------------------------
 async function getUsers() {
-  const response = await fetch(`${API_URL}/users`);
+  const response = await fetch(`${API_URL}/users/`);
   if (!response.ok) throw new Error("Error al obtener usuarios");
   return await response.json();
 }
@@ -30,9 +29,9 @@ async function createUser(userData) {
   });
 
   if (!response.ok) throw new Error("Error al crear usuario");
+
   const newUser = await response.json();
 
-  // Si el usuario es tutor, crear su documento en /tutors
   if (userData.role === "tutor") {
     const tutorPayload = {
       userID: newUser.userID,
