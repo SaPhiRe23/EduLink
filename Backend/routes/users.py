@@ -1,21 +1,21 @@
 from fastapi import APIRouter, HTTPException
-from models.user import User
 from typing import List
-from database import db
+from models.user import User
+from database import db, get_next_id
 
 router = APIRouter(prefix="/users", tags=["Usuarios"])
 
 @router.get("/", response_model=List[User])
 async def get_users():
-    users = await db.users.find().to_list(100)
+    users = await db.users.find().to_list(200)
 
-    clean_users = []
+    clean = []
     for u in users:
-        u["id"] = str(u["_id"])
-        del u["_id"]
-        clean_users.append(u)
+        u.pop("_id", None)
+        clean.append(u)
 
-    return clean_users
+    return clean
+
 
 @router.post("/", response_model=User)
 async def create_user(user: User):
@@ -23,9 +23,10 @@ async def create_user(user: User):
     if existing:
         raise HTTPException(status_code=400, detail="El usuario ya existe")
 
-    new_user = user.model_dump(exclude={"id"})
-    result = await db.users.insert_one(new_user)
+    # 🔥 Obtener un ID autoincremental seguro
+    user.userID = await get_next_id("users")
 
-    new_user["id"] = str(result.inserted_id)
+    new_user = user.model_dump()
+    await db.users.insert_one(new_user)
 
     return new_user
